@@ -7,21 +7,19 @@ app.use(express.json())
 
 /* Create */
 app.post('/characters', (req, res) => {
-  console.log(req.body);
-  
   Character.insertMany(req.body).then(chars => {
     return res.send(chars)
-  }).catch((err) => {
-    return res.send(400).sendStatus(err);
+  }).catch(err => {
+    return res.sendStatus(400).send(err);
   });
 });
 
 /* Read */
 app.get('/characters', (req, res) => {
   Character.find({}).then((characters) => {
-    res.send(characters);
+    return res.send(characters);
   }).catch(err => {
-    res.status(500).sendStatus(err);
+    return res.status(500).send(err);
   });
 });
 
@@ -29,7 +27,7 @@ app.get('/characters/:id', (req, res) => {
   _id = req.params.id;
   Character.findById(_id).then((character) => {
     return res.send(character);
-  }).catch((err) => {
+  }).catch( _ => {
     return res.status(404).send({});
   });
 });
