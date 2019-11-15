@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const character = require('./controllers/charactersController');
+const defaultRoute = require('./controllers/defaultController');
+
+/* Default Route */
+app.get('*', defaultRoute.defaultRoute);
 
 /* Create */
 router.post('/characters', character.createCharacter);
