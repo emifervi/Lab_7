@@ -10,7 +10,7 @@ app.post('/characters', (req, res) => {
   Character.insertMany(req.body).then(chars => {
     return res.send(chars)
   }).catch(err => {
-    return res.sendStatus(400).send(err);
+    return res.status(400).send(err);
   });
 });
 
