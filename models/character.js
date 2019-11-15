@@ -1,4 +1,3 @@
-const validator = require('validator');
 const mongoose = require('mongoose');
 
 const characterSchema = mongoose.Schema({
