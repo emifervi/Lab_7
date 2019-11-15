@@ -3,9 +3,6 @@ const router = express.Router();
 const character = require('./controllers/charactersController');
 const defaultRoute = require('./controllers/defaultController');
 
-/* Default Route */
-router.get('*', defaultRoute);
-
 /* Create */
 router.post('/characters', character.createCharacter);
 
@@ -22,5 +19,8 @@ router.patch('/characters/:id', character.updateCharacter);
 
 /* Delete */
 router.delete('/characters/:id', character.deleteCharacter);
+
+/* Default Route */
+router.get('*', defaultRoute);
 
 module.exports = router;
