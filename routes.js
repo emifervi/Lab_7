@@ -4,7 +4,7 @@ const character = require('./controllers/charactersController');
 const defaultRoute = require('./controllers/defaultController');
 
 /* Default Route */
-router.get('*', defaultRoute.defaultRoute);
+router.get('*', defaultRoute);
 
 /* Create */
 router.post('/characters', character.createCharacter);
