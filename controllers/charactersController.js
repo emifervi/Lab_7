@@ -23,7 +23,7 @@ const getCharacter = (req, res) => {
   Character.findById(_id).then(character => {
     return res.send(character);
   }).catch( _ => {
-    return res.status(404).send({});
+    return res.status(404).send({error: "Character not found"});
   });
 };
 
@@ -42,7 +42,7 @@ const updateCharacter = (req, res) => {
   }
   Character.findByIdAndUpdate(_id, req.body).then(character => {
     if(!character) {
-      return res.status(404).send({});
+      return res.status(404).send({error: "Character not found"});
     }
     return res.send(character);
   }).catch(err => {
@@ -55,7 +55,7 @@ const deleteCharacter = (req, res) => {
   const _id = req.params.id;
   Character.findByIdAndDelete(_id).then(character => {
     if(!character) {
-      return res.status(404).send();
+      return res.status(404).send({error: "Character not found"});
     }
     return res.send(character);
   }).catch(err => {
