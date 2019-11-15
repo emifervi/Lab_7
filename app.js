@@ -1,36 +1,10 @@
 const express = require('express'), 
       app = express(),
-      Character = require('./models/character'),
-      mongoose = require('mongoose');
+      mongoose = require('mongoose'),
+      router = require('./routes');
 
-app.use(express.json())
-
-/* Create */
-app.post('/characters', (req, res) => {
-  Character.insertMany(req.body).then(chars => {
-    return res.send(chars)
-  }).catch(err => {
-    return res.status(400).send(err);
-  });
-});
-
-/* Read */
-app.get('/characters', (req, res) => {
-  Character.find({}).then((characters) => {
-    return res.send(characters);
-  }).catch(err => {
-    return res.status(500).send(err);
-  });
-});
-
-app.get('/characters/:id', (req, res) => {
-  _id = req.params.id;
-  Character.findById(_id).then((character) => {
-    return res.send(character);
-  }).catch( _ => {
-    return res.status(404).send({});
-  });
-});
+app.use(express.json());
+app.use('/', router);
 
 /* Start Server */
 const {DATABASE_URL, PORT} = require('./config');
