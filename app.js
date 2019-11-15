@@ -12,7 +12,7 @@ app.post('/characters', (req, res) => {
   Character.insertMany(req.body).then(chars => {
     return res.send(chars)
   }).catch((err) => {
-    return res.send(400).send(err);
+    return res.send(400).sendStatus(err);
   });
 });
 
@@ -21,7 +21,7 @@ app.get('/characters', (req, res) => {
   Character.find({}).then((characters) => {
     res.send(characters);
   }).catch(err => {
-    res.status(500).send(err);
+    res.status(500).sendStatus(err);
   });
 });
 
