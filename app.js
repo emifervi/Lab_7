@@ -1,7 +1,7 @@
-const express = require('express'), 
-      app = express(),
+const express = require('express'),
       mongoose = require('mongoose'),
-      router = require('./routes');
+      router = require('./routes'),
+      app = express();
 
 app.use(express.json());
 app.use('/', router);

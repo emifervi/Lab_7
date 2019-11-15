@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const character = require('./Controllers/charactersController');
+const character = require('./controllers/charactersController');
 
 /* Create */
 router.post('/characters', character.createCharacter);
